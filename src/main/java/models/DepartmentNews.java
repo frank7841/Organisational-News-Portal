@@ -28,7 +28,13 @@ public class DepartmentNews extends News{
     public void setId(int id) {
         this.id = id;
     }
+    public int getUserid() {
+        return userid;
+    }
 
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
     public int getDepartmentid() {
         return departmentId;
     }
