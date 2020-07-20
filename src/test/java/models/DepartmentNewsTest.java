@@ -36,6 +36,11 @@ public class DepartmentNewsTest{
         testDepartmentNews.setContent("No meeting today");
         assertNotEquals("Check Your emails for meeting transcript",testDepartmentNews.getContent());
     }
-
+    @Test
+    public void setId_true(){
+        DepartmentNews testDepartmentNews=setUpDepartmentNews();
+        testDepartmentNews.setId(4);
+        assertEquals(4,testDepartmentNews.getId());
+    }
 
 }
