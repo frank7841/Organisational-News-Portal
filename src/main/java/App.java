@@ -60,6 +60,15 @@ public class App {
                 return "{\"message\":\"Apologies , no departments are available.\"}";
             }
         });
+        get("/departments/:id", "application/json", (req, res) -> {
+            int idOfDepartmentToFind=Integer.parseInt(req.params("id"));
+            Department departmentToFind=departmentDao.findById(idOfDepartmentToFind);
+            if (departmentToFind == null){
+                throw new ApiException(404, String.format("No department with the id: \"%s\" exists", req.params("id")));
+            }
+            return gson.toJson(departmentToFind);
+        });
+
 
 
     }
