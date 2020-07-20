@@ -53,5 +53,13 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao {
             System.out.println(ex);
         }
     }
+    @Override
+    public void deleteAll(){
+        String sql="DELETE FROM news";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .executeUpdate();
+        }
+    }
 
 }
