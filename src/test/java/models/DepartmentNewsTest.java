@@ -64,5 +64,10 @@ public class DepartmentNewsTest{
         testDepartmentNews.setDepartmentid(5);
         assertNotEquals(1,testDepartmentNews.getDepartmentid());
     }
+    @Test
+    public void getType_returnsCorrectDepartmentType(){
+        DepartmentNews testDepartmentNews=setUpDepartmentNews();
+        assertEquals("department",testDepartmentNews.getDatabaseType());
+    }
 
 }
