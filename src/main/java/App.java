@@ -68,6 +68,15 @@ public class App {
             }
             return gson.toJson(departmentToFind);
         });
+        get("/users", "application/json", (req, res) -> {
+            System.out.println(userDao.getAll());
+            if(userDao.getAll().size() > 0){
+                return gson.toJson(userDao.getAll());
+            }
+            else {
+                return "{\"message\":\"Apologies , no users are available.\"}";
+            }
+        });
 
 
 
