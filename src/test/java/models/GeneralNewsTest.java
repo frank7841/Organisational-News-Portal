@@ -39,5 +39,15 @@ public class GeneralNewsTest {
         testGeneralNews.setContent("Company layoffs");
         assertNotEquals("Agm meeting date ", testGeneralNews.getContent());
     }
-
+    @Test
+    public void getUserId_returnsCorrectUser_Id(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        assertEquals(2,testGeneralNews.getUserid());
+    }
+    @Test
+    public void setUserId_true(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        testGeneralNews.setUserid(1);
+        assertNotEquals(2,testGeneralNews.getUserid());
+    }
 }

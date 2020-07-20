@@ -15,5 +15,8 @@ public class GeneralNews extends News {
     public void setContent(String content) {
         this.content = content;
     }
+    public int getUserid() {return userid; }
+
+    public void setUserid(int userid) { this.userid = userid; }
 
 }
