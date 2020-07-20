@@ -55,4 +55,13 @@ public class Sql2oGeneralNewsDaoTest{
     public void noGeneralNewsReturnsEmptyList() throws Exception {
         assertEquals(0, generalNewsDao.getAll().size());
     }
+    @Test
+    public void deleteByIdDeletesCorrectGeneralNews() throws Exception {
+        GeneralNews generalNews = setupNewGeneralNews();
+        GeneralNews generalNews1=setupNewGeneralNews1();
+        generalNewsDao.add(generalNews);
+        generalNewsDao.add(generalNews1);
+        generalNewsDao.deleteById(generalNews.getId());
+        assertEquals(1, generalNewsDao.getAll().size());
+    }
 }
