@@ -94,6 +94,16 @@ public class App {
             return gson.toJson(generalNewsDao.getAll());
 
         });
+        get("/departmentnews", "application/json", (req, res) -> {
+            System.out.println(departmentNewsDao.getAll());
+            System.out.println(DepartmentNews.getDatabaseType());
+            int sizeNews = departmentNewsDao.getAll().size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No departmental news available"));
+            }
+            return gson.toJson(departmentNewsDao.getAll());
+        });
+
 
 
 
