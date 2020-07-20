@@ -1,4 +1,8 @@
 package models;
 
-public class News {
+public abstract  class News {
+    public String content;
+    public String type;
+    public int userid;
+
 }
