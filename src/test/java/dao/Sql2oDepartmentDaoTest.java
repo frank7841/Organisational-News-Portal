@@ -56,6 +56,12 @@ public class Sql2oDepartmentDaoTest {
     public void noDepartmentsReturnsEmptyList() throws Exception {
         assertEquals(0, departmentDao.getAll().size());
     }
-
+    @Test
+    public void deleteByIdDeletesCorrectDepartment() throws Exception {
+        Department department = setupNewDepartment();
+        departmentDao.add(department);
+        departmentDao.deleteById(department.getId());
+        assertEquals(0, departmentDao.getAll().size());
+    }
 
 }
