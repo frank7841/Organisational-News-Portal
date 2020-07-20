@@ -68,3 +68,18 @@ public class Sql2oUsersDao implements UsersDao {
     }
 
 }
+    @Override
+    public void update(int id,String newUsername,String newPositionInCOmpany,String newRole,int newDepartmentid){
+        String sql="UPDATE users SET (username, positionincompany, role, departmentid) = (:username, :positionincompany, :role, :departmentid)";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("username", newUsername)
+                    .addParameter("positionincompany",newPositionInCOmpany)
+                    .addParameter("role",newRole)
+                    .addParameter("departmentid",newDepartmentid)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
