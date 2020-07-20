@@ -13,6 +13,13 @@ public class DepartmentNews extends News{
         this.departmentId=departmentId;
         type = DATABASE_TYPE;
     }
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getId() {
         return id;
