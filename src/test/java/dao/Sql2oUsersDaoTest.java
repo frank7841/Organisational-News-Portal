@@ -57,11 +57,21 @@ public class Sql2oUsersDaoTest {
         assertEquals(0, userDao.getAll().size());
     }
     @Test
-    public void deleteByIdDeletesCorrectFoodtype() throws Exception {
+    public void deleteByIdDeletesCorrectUsers() throws Exception {
         Users users = setupNewUser();
         userDao.add(users);
         userDao.deleteById(users.getId());
         assertEquals(0, userDao.getAll().size());
     }
+    @Test
+    public void deleteAll() throws Exception{
+        Users testUser=setupNewUser();
+        Users testUser1=setupNewUser1();
+        userDao.add(testUser);
+        userDao.add(testUser1);
+        userDao.deleteAll();
+        assertEquals(0,userDao.getAll().size());
+    }
+
 }
 
