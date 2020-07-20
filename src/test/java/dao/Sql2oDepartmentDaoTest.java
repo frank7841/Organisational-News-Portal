@@ -80,7 +80,7 @@ public class Sql2oDepartmentDaoTest {
         departmentDao.update(testDepartment.getId(),"Animation","We are You");
         Department foundDepartment=departmentDao.findById(testDepartment.getId());
         assertEquals("Animation",foundDepartment.getDepName());
-        assertEquals("We are you",foundDepartment.getDescription());
+        assertEquals("We are You",foundDepartment.getDescription());
     }
 
 }
