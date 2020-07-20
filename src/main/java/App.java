@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import dao.*;
 import models.Department;
 import models.DepartmentNews;
+import Exception.ApiException;
 import models.GeneralNews;
 import models.Users;
 import org.sql2o.Sql2o;
