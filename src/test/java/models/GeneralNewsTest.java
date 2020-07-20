@@ -55,4 +55,16 @@ public class GeneralNewsTest {
         GeneralNews testGeneralNews=setUpGeneralNews();
         assertEquals("general",testGeneralNews.getDatabaseType());
     }
+    @Test
+    public void setType_setAType_true(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        testGeneralNews.setDatabaseType("departmet");
+        assertEquals("general",testGeneralNews.getDatabaseType());
+    }
+    @Test
+    public void setId_setAnId_true(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        testGeneralNews.setId(8);
+        assertNotEquals(1,testGeneralNews.getId());
+    }
 }

@@ -22,4 +22,16 @@ public class GeneralNews extends News {
     public static String getDatabaseType() {
         return DATABASE_TYPE;
     }
+    public void  setDatabaseType(String type){
+        type=DATABASE_TYPE;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
