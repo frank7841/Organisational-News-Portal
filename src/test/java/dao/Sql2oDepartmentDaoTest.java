@@ -8,11 +8,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sql2o.Connection;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oDepartmentDaoTest {
     public Department setupNewDepartment(){
         return new Department("production","Furnace of the Company");
+    }
+    public Department setupAnotherDepartment(){
+        return new Department("Advertising","We sale unsaleable");
     }
     private static Sql2oDepartmentDao departmentDao;
     private static Connection con;
@@ -34,11 +38,23 @@ public class Sql2oDepartmentDaoTest {
         System.out.println("connection closed");
     }
     @Test
-    public void addingDepartmentSetsId() throws Exception {
+    public void addDepartment_returnsCorectlySetId() throws Exception {
         Department testDepartment = setupNewDepartment();
         int originalDepartmentId = testDepartment.getId();
         departmentDao.add(testDepartment);
-        assertNotEquals(originalDepartmentId,testDepartment.getId());
+        assertEquals(originalDepartmentId,testDepartment.getId());
+    }
+    @Test
+    public void addedDepartmentsAreReturnedFromGetAll() throws Exception {
+        Department testDepartment = setupNewDepartment();
+        Department newTestDepartment=setupAnotherDepartment();
+        departmentDao.add(testDepartment);
+        departmentDao.add(newTestDepartment);
+        assertEquals(2, departmentDao.getAll().size());
+    }
+    @Test
+    public void noDepartmentsReturnsEmptyList() throws Exception {
+        assertEquals(0, departmentDao.getAll().size());
     }
 
 

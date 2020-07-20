@@ -43,7 +43,7 @@ public class Sql2oDepartmentDao implements DeapartmentDao {
     }
     @Override
     public List<Users> getAllUsersByDepartment(int id) {
-        String sql = "SELECT * FROM users WHERE departmentid = :id ";
+        String sql = "SELECT * FROM users WHERE departmentId = :id ";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
@@ -62,10 +62,10 @@ public class Sql2oDepartmentDao implements DeapartmentDao {
     }
     @Override
     public void update(int id, String newDepName, String newDescription) {
-        String sql = "UPDATE departments SET (depName, description) = (:depName, :description) WHERE id = :id";
+        String sql = "UPDATE departments SET (depname, description) = (:depname, :description) WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("depName", newDepName)
+                    .addParameter("depname", newDepName)
                     .addParameter("description", newDescription)
                     .addParameter("id", id)
                     .executeUpdate();
