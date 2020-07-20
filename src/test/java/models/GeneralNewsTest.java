@@ -2,6 +2,6 @@ package models;
 
 import junit.framework.TestCase;
 
-public class GeneralNewsTest extends TestCase {
+public class GeneralNewsTest{
 
 }
