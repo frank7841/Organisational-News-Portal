@@ -9,8 +9,9 @@ import java.util.List;
 
 public class Sql2oUsersDao implements UsersDao {
     private final Sql2o sql2o;
-    public  Sql2oDepartmentDao(Sql2o sql2o) {
-        this.sql2o = sql2o;
+
+    public Sql2oUsersDao(Sql2o sql2o){
+        this.sql2o=sql2o;
     }
     @Override
     public void add(Users users){
@@ -67,7 +68,6 @@ public class Sql2oUsersDao implements UsersDao {
         return departmentNews;
     }
 
-}
     @Override
     public void update(int id,String newUsername,String newPositionInCOmpany,String newRole,int newDepartmentid){
         String sql="UPDATE users SET (username, positionincompany, role, departmentid) = (:username, :positionincompany, :role, :departmentid)";
@@ -83,3 +83,23 @@ public class Sql2oUsersDao implements UsersDao {
             System.out.println(ex);
         }
     }
+    @Override
+    public void deleteById(int id){
+        String sql="DELETE FROM users WHERE id=:id";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeUpdate();
+
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+    @Override
+    public void deleteAll(){
+        try(Connection con=sql2o.open()){
+            con.createQuery("DELETE FROM users")
+                    .executeUpdate();
+        }
+    }
+}
