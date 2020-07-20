@@ -8,6 +8,7 @@ import org.sql2o.Sql2o;
 
 import java.sql.Connection;
 
+import static spark.Spark.get;
 import static spark.Spark.post;
 
 public class App {
@@ -50,5 +51,16 @@ public class App {
             res.status(201);
             return gson.toJson(departmentNews);
         });
+        get("/departments", "application/json", (req, res) -> {
+            System.out.println(departmentDao.getAll());
+            if(departmentDao.getAll().size() > 0){
+                return gson.toJson(departmentDao.getAll());
+            }
+            else {
+                return "{\"message\":\"Apologies , no departments are available.\"}";
+            }
+        });
+
+
     }
 }
