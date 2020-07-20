@@ -46,6 +46,7 @@ public class DepartmentNews extends News{
     public static String getDatabaseType() {
         return DATABASE_TYPE;
     }
+    public void setDatabaseType(String type) { type = DATABASE_TYPE;}
 
     @Override
     public boolean equals(Object o) {
