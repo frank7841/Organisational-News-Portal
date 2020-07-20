@@ -53,6 +53,18 @@ public class Sql2oUsersDao implements UsersDao {
         }
         return generalNews;
     }
-
+    @Override
+    public List<DepartmentNews> getAllDepartmentNewsForUser (int id){
+        ArrayList<DepartmentNews> departmentNews=new ArrayList<>();
+        String sql="SELECT * FROM news WHERE type='department' AND id = :userid";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetch(DepartmentNews.class);
+        }    catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+        return departmentNews;
+    }
 
 }
