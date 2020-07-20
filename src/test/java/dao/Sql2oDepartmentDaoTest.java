@@ -77,10 +77,10 @@ public class Sql2oDepartmentDaoTest {
     public void update() throws Exception{
         Department testDepartment=setupNewDepartment();
         departmentDao.add(testDepartment);
-        departmentDao.update(testDepartment.getId(),"Ghosts","Was demolished");
+        departmentDao.update(testDepartment.getId(),"Animation","We are You");
         Department foundDepartment=departmentDao.findById(testDepartment.getId());
-        assertEquals("Ghosts",foundDepartment.getDepName());
-        assertEquals("Was demolished",foundDepartment.getDescription());
+        assertEquals("Animation",foundDepartment.getDepName());
+        assertEquals("We are you",foundDepartment.getDescription());
     }
 
 }

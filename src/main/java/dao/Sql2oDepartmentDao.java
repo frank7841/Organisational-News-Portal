@@ -15,7 +15,7 @@ public class Sql2oDepartmentDao implements DeapartmentDao {
     }
     @Override
     public void add(Department department) {
-        String sql = "INSERT INTO departments(name,description) VALUES (:name,:description)";
+        String sql = "INSERT INTO departments(depname,description) VALUES (:depname,:description)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(department)
@@ -43,7 +43,7 @@ public class Sql2oDepartmentDao implements DeapartmentDao {
     }
     @Override
     public List<Users> getAllUsersByDepartment(int id) {
-        String sql = "SELECT * FROM users WHERE departmentId = :id ";
+        String sql = "SELECT * FROM users WHERE departmentid = :id ";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
@@ -53,7 +53,7 @@ public class Sql2oDepartmentDao implements DeapartmentDao {
 
     @Override
     public List<DepartmentNews> getAllDepartmentNewsForDepartment(int id) {
-        String sql = "SELECT * FROM news WHERE departmentId = :id ";
+        String sql = "SELECT * FROM news WHERE departmentid = :id ";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
