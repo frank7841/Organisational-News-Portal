@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import dao.*;
 import models.Department;
+import models.GeneralNews;
 import models.Users;
 import org.sql2o.Sql2o;
 
@@ -34,6 +35,12 @@ public class App {
             userDao.add(user);
             res.status(201);
             return gson.toJson(user);
+        });
+        post("/generalnews/new", "application/json", (req, res) -> {
+            GeneralNews generalNews = gson.fromJson(req.body(), GeneralNews.class);//            ;
+            generalNewsDao.add(generalNews);
+            res.status(201);
+            return gson.toJson(generalNews);
         });
     }
 }
