@@ -35,4 +35,12 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao {
                     .executeAndFetch(DepartmentNews.class);
         }
     }
+    @Override
+    public DepartmentNews findById(int id){
+        try(Connection con=sql2o.open()){
+            return con.createQuery("SELECT * FROM news WHERE type='department' AND id = :id ")
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(DepartmentNews.class);
+        }
+    }
 }
