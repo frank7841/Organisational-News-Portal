@@ -34,5 +34,24 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao {
                     .executeAndFetch(GeneralNews.class);
         }
     }
+    @Override
+    public GeneralNews findById(int id){
+        try(Connection con=sql2o.open()){
+            return con.createQuery("SELECT * FROM news id = :id ")
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(GeneralNews.class);
+        }
+    }
+    @Override
+    public void deleteById(int id){
+        String sql="DELETE FROM news WHERE id = :id ";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        }catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 
 }
