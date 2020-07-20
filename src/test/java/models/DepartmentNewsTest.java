@@ -58,5 +58,11 @@ public class DepartmentNewsTest{
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
         assertEquals(1,testDepartmentNews.getDepartmentid());
     }
+    @Test
+    public void setDepartmentId_true(){
+        DepartmentNews testDepartmentNews=setUpDepartmentNews();
+        testDepartmentNews.setDepartmentid(5);
+        assertNotEquals(1,testDepartmentNews.getDepartmentid());
+    }
 
 }
