@@ -7,9 +7,11 @@ import models.Users;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
+import static spark.Spark.after;
 
 public class App {
     public static void main(String[] args){
@@ -124,12 +126,20 @@ public class App {
             return gson.toJson(departmentDao.getAllDepartmentNewsForDepartment(departmentId));
         });
 
+//Implementing filters
+        exception(ApiException.class, (exception, req, res) -> {
+            ApiException err = exception;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", err.getStatusCode());
+            jsonMap.put("errorMessage", err.getMessage());
+            res.type("application/json");
+            res.status(err.getStatusCode());
+            res.body(gson.toJson(jsonMap));
+        });
 
-
-
-
-
-
+        after((req, res) ->{
+            res.type("application/json");
+        });
 
 
     }
