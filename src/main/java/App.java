@@ -33,6 +33,7 @@ public class App {
         Sql2oUsersDao userDao;
         Connection conn;
         Gson gson=new Gson();
+        staticFileLocation("/public");
         Sql2o sql2o = DB.sql2o;
         departmentDao=new Sql2oDepartmentDao(sql2o);
         departmentNewsDao=new Sql2oDepartmentNewsDao(sql2o);
