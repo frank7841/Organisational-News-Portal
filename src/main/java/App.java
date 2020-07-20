@@ -113,6 +113,18 @@ public class App {
             }
             return gson.toJson(departmentDao.getAllUsersByDepartment(departmentId));
         });
+        get("/departmentnews/department/:id", "application/json", (req, res) -> {
+            int departmentId=Integer.parseInt(req.params("id"));
+            System.out.println(departmentDao.getAllDepartmentNewsForDepartment(departmentId));
+
+            int sizeNews = departmentDao.getAllDepartmentNewsForDepartment(departmentId).size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No news available for this department"));
+            }
+            return gson.toJson(departmentDao.getAllDepartmentNewsForDepartment(departmentId));
+        });
+
+
 
 
 
