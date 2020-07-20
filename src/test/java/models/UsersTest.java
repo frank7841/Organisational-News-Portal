@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 
 public class UsersTest{
@@ -28,6 +29,12 @@ public class UsersTest{
     public void getName_returnsCorrectName(){
         Users testUser=setUpUsers();
         assertEquals("frankline",testUser.getUsername());
+    }
+    @Test
+    public void setName_setName_true(){
+        Users testUser=setUpUsers();
+        testUser.setUsername("marko");
+        assertNotEquals("frankline",testUser.getUsername());
     }
 
 }
