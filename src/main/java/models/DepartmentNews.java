@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class DepartmentNews extends News{
     private int id;
     private int departmentId;
@@ -30,5 +32,19 @@ public class DepartmentNews extends News{
 
     public static String getDatabaseType() {
         return DATABASE_TYPE;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DepartmentNews that = (DepartmentNews) o;
+        return id == that.id &&
+                departmentId == that.departmentId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, departmentId);
     }
 }
