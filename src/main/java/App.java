@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import dao.*;
 import models.Department;
+import models.Users;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
@@ -27,6 +28,12 @@ public class App {
             departmentDao.add(department);
             res.status(201);
             return gson.toJson(department);
+        });
+        post("/users/new", "application/json", (req, res) -> {
+            Users user = gson.fromJson(req.body(), Users.class);
+            userDao.add(user);
+            res.status(201);
+            return gson.toJson(user);
         });
     }
 }
