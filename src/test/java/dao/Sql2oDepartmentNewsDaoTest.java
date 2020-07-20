@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sql2o.Connection;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oDepartmentNewsDaoTest {
@@ -41,5 +42,38 @@ public class Sql2oDepartmentNewsDaoTest {
         departmentNewsDao.add(testDepartmentNews);
         assertNotEquals(originalDepartmentNewsId,testDepartmentNews.getId());
     }
+    @Test
+    public void addingDepartmentNewsAddsDepartmentIdId() throws Exception {
+        DepartmentNews testDepartmentNews = setupNewDepartmentNews();
+        departmentNewsDao.add(testDepartmentNews);
+        assertEquals(2,testDepartmentNews.getDepartmentid());
+    }
+    @Test
+    public void addingDepartmentNewsCanSetDepartmentIdId() throws Exception {
+        DepartmentNews testDepartmentNews = setupNewDepartmentNews();
+        testDepartmentNews.setDepartmentid(4);
+        departmentNewsDao.add(testDepartmentNews);
+        assertEquals(4,testDepartmentNews.getDepartmentid());
+    }
+    @Test
+    public void addedDepartmentNewssAreReturnedFromGetAll() throws Exception {
+        DepartmentNews testDepartmentNews = setupNewDepartmentNews();
+        DepartmentNews testDepartmentNews1=setupNewDepartmentNews1();
+        departmentNewsDao.add(testDepartmentNews);
+        departmentNewsDao.add(testDepartmentNews1);
+        assertEquals(2, departmentNewsDao.getAll().size());
+    }
+    @Test
+    public void noDepartmentNewsReturnsEmptyList() throws Exception {
+        assertEquals(0, departmentNewsDao.getAll().size());
+    }
+    @Test
+    public void deleteByIdDeletesCorrectDepartmentNews() throws Exception {
+        DepartmentNews departmentNews = setupNewDepartmentNews();
+        departmentNewsDao.add(departmentNews);
+        departmentNewsDao.deleteById(departmentNews.getId());
+        assertEquals(0, departmentNewsDao.getAll().size());
+    }
+
 
 }
