@@ -103,6 +103,17 @@ public class App {
             }
             return gson.toJson(departmentNewsDao.getAll());
         });
+        get("/users/department/:id", "application/json", (req, res) -> {
+            int departmentId=Integer.parseInt(req.params("id"));
+//            System.out.println(departmentDao.getAllUsersByDepartment(departmentId));
+            System.out.println(departmentId);
+            int sizeUsers = departmentDao.getAllUsersByDepartment(departmentId).size();
+            if (sizeUsers == 0){
+                throw new ApiException(404, String.format("No users available in this department"));
+            }
+            return gson.toJson(departmentDao.getAllUsersByDepartment(departmentId));
+        });
+
 
 
 
