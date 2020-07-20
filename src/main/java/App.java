@@ -85,6 +85,16 @@ public class App {
             }
             return gson.toJson(userToFind);
         });
+        get("/generalnews", "application/json", (req, res) -> {
+
+            int sizeNews = generalNewsDao.getAll().size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No general news available"));
+            }
+            return gson.toJson(generalNewsDao.getAll());
+
+        });
+
 
 
 
