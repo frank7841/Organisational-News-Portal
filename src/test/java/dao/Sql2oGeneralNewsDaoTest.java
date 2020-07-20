@@ -51,4 +51,8 @@ public class Sql2oGeneralNewsDaoTest{
         generalNewsDao.add(testGeneralNews1);
         assertEquals(2, generalNewsDao.getAll().size());
     }
+    @Test
+    public void noGeneralNewsReturnsEmptyList() throws Exception {
+        assertEquals(0, generalNewsDao.getAll().size());
+    }
 }
