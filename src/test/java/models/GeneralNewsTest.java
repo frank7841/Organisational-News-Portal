@@ -50,4 +50,9 @@ public class GeneralNewsTest {
         testGeneralNews.setUserid(1);
         assertNotEquals(2,testGeneralNews.getUserid());
     }
+    @Test
+    public void getDatabaseType_returnsCorrectDepartmentTtype(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        assertEquals("general",testGeneralNews.getDatabaseType());
+    }
 }

@@ -19,4 +19,7 @@ public class GeneralNews extends News {
 
     public void setUserid(int userid) { this.userid = userid; }
 
+    public static String getDatabaseType() {
+        return DATABASE_TYPE;
+    }
 }
