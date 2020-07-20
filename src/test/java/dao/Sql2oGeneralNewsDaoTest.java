@@ -64,4 +64,14 @@ public class Sql2oGeneralNewsDaoTest{
         generalNewsDao.deleteById(generalNews.getId());
         assertEquals(1, generalNewsDao.getAll().size());
     }
+    @Test
+    public void deleteAll() throws Exception{
+        GeneralNews testGeneralNews=setupNewGeneralNews();
+        GeneralNews testGeneralNews1=setupNewGeneralNews1();
+        generalNewsDao.add(testGeneralNews);
+        generalNewsDao.add(testGeneralNews1);
+        generalNewsDao.deleteAll();
+        assertEquals(0,generalNewsDao.getAll().size());
+
+    }
 }
