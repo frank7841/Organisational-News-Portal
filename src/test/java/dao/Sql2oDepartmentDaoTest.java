@@ -73,5 +73,14 @@ public class Sql2oDepartmentDaoTest {
         assertEquals(0,departmentDao.getAll().size());
 
     }
+    @Test
+    public void update() throws Exception{
+        Department testDepartment=setupNewDepartment();
+        departmentDao.add(testDepartment);
+        departmentDao.update(testDepartment.getId(),"Ghosts","Was demolished");
+        Department foundDepartment=departmentDao.findById(testDepartment.getId());
+        assertEquals("Ghosts",foundDepartment.getDepName());
+        assertEquals("Was demolished",foundDepartment.getDescription());
+    }
 
 }
