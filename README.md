@@ -1,7 +1,3 @@
-# ORGANIZATIONAL API
-[![CircleCI](https://circleci.com/gh/DENNINGKEVIN/OrganizationalAPI.svg?style=svg)](https://circleci.com/gh/DENNINGKEVIN/OrganizationalAPI)
-#### An API for viewing news and departments.
-#### By **Denning Kevin Mulama**
 
 ## Description
 This is an API designed to allow users various abilities ie view users ,departments,general news etc.
@@ -20,8 +16,8 @@ postman
 ## Paths
 | Url  | Http Verb  | Description |
 | :------------ |:---------------:| -----:|
-| /users/new    | POST | Add New  |
-| /departmentnews/new     | Post        |   Add new Departments |
+| /department/new  | POST | Add New Departments  |
+| /departments     | Get       |   Display all departments |
 | zebra stripes | are neat        |    $1 |
 
 ## Support and contact details

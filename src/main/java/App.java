@@ -55,7 +55,7 @@ public class App {
             res.status(201);
             return gson.toJson(department);
         });
-        get("/departments/:id", "application/json", (req, res) -> {
+        get("/department/:id", "application/json", (req, res) -> {
             int idOfDepartmentToFind=Integer.parseInt(req.params("id"));
             Department departmentToFind=departmentDao.findById(idOfDepartmentToFind);
             if (departmentToFind == null){
