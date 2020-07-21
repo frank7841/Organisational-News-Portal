@@ -79,14 +79,14 @@ public class App {
                 return "{\"message\":\"Apologies , no users are available.\"}";
             }
         });
-        //get("/users/:id", "application/json", (req, res) -> {
-          //  int idOfUserToFind=Integer.parseInt(req.params("id"));
-            //Users userToFind=usersDao.findById(idOfUserToFind);
-            //if (userToFind == null){
-              //  throw new ApiException(404, String.format("No user with the id: \"%s\" exists", req.params("id")));
-            //}
-            //return gson.toJson(userToFind);
-        //});
+        get("/users/:id", "application/json", (req, res) -> {
+            int idOfUserToFind=Integer.parseInt(req.params("id"));
+            Users userToFind=usersDao.findById(idOfUserToFind);
+            if (userToFind == null){
+                throw new ApiException(404, String.format("No user with the id: \"%s\" exists", req.params("id")));
+            }
+            return gson.toJson(userToFind);
+        });
         get("/generalnews", "application/json", (req, res) -> {
 
             int sizeNews = generalNewsDao.getAll().size();
