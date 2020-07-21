@@ -32,7 +32,7 @@ public class App {
         Sql2oUsersDao usersDao;
         Connection con;
         Gson gson=new Gson();
-        staticFileLocation("/public");
+        staticFileLocation("/");
 
         Sql2o sql2o = DB.sql2o;
         departmentDao=new Sql2oDepartmentDao(sql2o);
@@ -49,7 +49,7 @@ public class App {
                 return "{\"message\":\"Apologies , no departments are available.\"}";
             }
         });
-        post("/departments/new", "application/json", (req, res) -> {
+        post("/department/new", "application/json", (req, res) -> {
             Department department = gson.fromJson(req.body(), Department.class);
             departmentDao.add(department);
             res.status(201);
@@ -156,7 +156,5 @@ public class App {
         after((req, res) ->{
             res.type("application/json");
         });
-
-
     }
 }
