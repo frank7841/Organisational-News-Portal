@@ -20,7 +20,7 @@ postman
 ## Paths
 | Url  | Http Verb  | Description |
 | :------------ |:---------------:| -----:|
-| /departments    | Get | Retrieve all departments |
+| /users/new    | POST | Add New  |
 | /departmentnews/new     | Post        |   Add new Departments |
 | zebra stripes | are neat        |    $1 |
 
